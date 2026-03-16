@@ -4,9 +4,30 @@ import java.util.Scanner;
 
 public class Main {
     static void main(String[] args) {
-        int[] array = arrayOfInt(5);
-        System.out.println(Arrays.toString(array));
+
         Scanner scanner = new Scanner(System.in);
+        int l;
+
+        while (true) {
+            System.out.println("Quanto vuoi che sia lungo l'array? Solo numeri > 0");
+
+            try {
+                l = Integer.parseInt(scanner.nextLine());
+                if (l <= 0) {
+                    throw new NumberFormatException();
+                }
+                break;
+
+            } catch (NumberFormatException e) {
+                System.out.println("numero non riconosciuto, riprova");
+            }
+
+
+        }
+
+        int[] array = arrayOfInt(l);
+        System.out.println(Arrays.toString(array));
+
 
         firstLoop:
         while (true) {
@@ -28,7 +49,7 @@ public class Main {
 
             int p;
             while (true) {
-                System.out.println("Inserisci la posizione in cui inserire il numero " + n + " precedentemente inserito, le posizioni possibili sono da 0 a 4: (* per uscire senza salvare)");
+                System.out.println("Inserisci la posizione in cui inserire il numero " + n + " precedentemente inserito, le posizioni possibili sono da 0 a" + (array.length - 1) + ": (* per uscire senza salvare)");
 
 
                 while (true) {
